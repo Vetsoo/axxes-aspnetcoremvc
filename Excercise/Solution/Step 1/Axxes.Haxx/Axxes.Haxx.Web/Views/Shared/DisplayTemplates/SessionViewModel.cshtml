@@ -1,0 +1,19 @@
+﻿@model Axxes.Haxx.Web.Models.SessionViewModel
+
+<div class="col-md-4 col-sm-6 col-xs-12">
+	<div class="session-box">
+		<h2>@Model.Title</h2>
+		<span class="date">@Model.DateTime</span>
+		@if (!string.IsNullOrEmpty(Model.Speaker))
+		{
+			<div class="speaker">Speaker: @Model.Speaker</div>
+		}
+		@if (!string.IsNullOrEmpty(Model.Category))
+		{
+			<div class="category">Category: @Model.Category</div>
+		}
+		<div id="session-details-@Model.Id">
+			<a class="btn btn-outline-primary" data-ajax="true" data-ajax-url="/home/SessionDetailsById/@Model.Id" data-ajax-update="#session-details-@Model.Id">View Detail</a>
+		</div>
+	</div>
+</div>

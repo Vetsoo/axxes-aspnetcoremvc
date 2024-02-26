@@ -1,0 +1,37 @@
+﻿@model UpcomingPassedSessionViewModel
+
+@{
+	ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+	<h1 class="display-4">Welcome</h1>
+</div>
+
+<h1 class="session-group-heading">Upcomming sessions</h1>
+<div class="row">
+	@if (Model.UpcommingSessions.Any())
+	{
+		@Html.DisplayFor(x => x.UpcommingSessions);
+	}
+	else
+	{
+		<div>No sessions.</div>
+	}
+</div>
+
+<h1 class="session-group-heading">Passed sessions</h1>
+<div class="row">
+	@if (Model.PassedSessions.Any())
+	{
+		@Html.DisplayFor(x => x.PassedSessions);
+	}
+	else
+	{
+		<div>No sessions.</div>
+	}
+</div>
+
+@section scripts {
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajax-unobtrusive/3.2.6/jquery.unobtrusive-ajax.min.js" integrity="sha512-DedNBWPF0hLGUPNbCYfj8qjlEnNE92Fqn7xd3Sscfu7ipy7Zu33unHdugqRD3c4Vj7/yLv+slqZhMls/4Oc7Zg==" crossorigin="anonymous"></script>
+}
