@@ -1,0 +1,35 @@
+﻿@model SessionDetailsViewModel
+
+@if (Model.Description != null)
+{
+	<div class="description">Description: @Model.Description</div>
+}
+
+@if (Model.Comments.Any())
+{
+	@:Comments:
+	<ul id="comments-list-@Model.Id">
+		@foreach (var comment in Model.Comments)
+		{
+			<li>
+				@comment.Text
+				@if (@comment.Author != null)
+				{
+					@: (by @comment.Author)
+				}
+			</li>
+		}
+	</ul>
+}
+else
+{
+	<p>No comments</p>
+}
+
+@if (ViewBag.CanEdit)
+{
+	@Html.ActionLink("Edit", "Edit", "Session", new { id = Model.Id }, new { @class = "btn btn-outline-primary" })
+	<span></span>
+	@Html.ActionLink("Delete", "Delete", "Session", new { id = Model.Id }, new { @class = "btn btn-outline-primary" })
+	<span></span>
+}
